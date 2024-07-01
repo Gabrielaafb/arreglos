@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inmobiliaria CF</title>
+  <link rel="stylesheet" href="./assets/css/estilos.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/f5bdbb41e0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Inmobiliaria CF</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="propiedades_venta.html">En venta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="propiedades_alquiler.html">Alquiler</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-5">
+    <h1 class="text-center">Propiedades en Alquiler</h1>
+    <div class="row" id="propiedadesEnAlquiler">
+    </div>
+    <a href="index.html" class="btn btn-dark mt-4">Volver a la página principal</a>
+  </main>
+
+  <script>
+    const propiedadesEnAlquiler = [
+      {
+        imagen: "./assets/img/ny.jpg",
+        titulo: "Apartamento en el centro de la ciudad",
+        descripcion: "Este apartamento de 2 habitaciones está ubicado en el corazón de la ciudad, cerca de todo.",
+        direccion: "123 Main Street, Anytown, CA 91234",
+        habitaciones: 2,
+        banos: 2,
+        precio: "2.000",
+        permiteFumar: false,
+        permiteMascotas: true
+      },
+      {
+        imagen: "./assets/img/positano.jpg",
+        titulo: "Apartamento luminoso con vista al mar",
+        descripcion: "Este hermoso apartamento ofrece una vista impresionante al mar.",
+        direccion: "456 Ocean Avenue, Seaside Town, CA 56789",
+        habitaciones: 3,
+        banos: 3,
+        precio: "2,500",
+        permiteFumar: true,
+        permiteMascotas: true
+      },
+      {
+        imagen: "./assets/img/condominio.jpg",
+        titulo: "Condominio moderno en zona residencial",
+        descripcion: "Este elegante condominio moderno está ubicado en una tranquila zona residencial.",
+        direccion: "123 Main Street, Anytown, CA 91234",
+        habitaciones: 2,
+        banos: 2,
+        precio: "2,200",
+        permiteFumar: false,
+        permiteMascotas: false
+      },
+      {
+        imagen: "./assets/img/campo.jpg",
+        titulo: "Casa en el campo con hermosas áreas comúnes",
+        descripcion: "Esta hermosa casa además de ser espaciosa cuenta con muchas áreas verdes para disfrutar el día.",
+        direccion: "433 Balmoral",
+        habitaciones: 6,
+        banos: 3,
+        precio: "5,500",
+        permiteFumar: true,
+        permiteMascotas: true
+      }
+    ];
+
+    const contenedorPropiedadesEnAlquiler = document.getElementById('propiedadesEnAlquiler');
+    propiedadesEnAlquiler.forEach(propiedad => {
+      const cardHTML = `
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="${propiedad.imagen}" class="card-img-top" alt="Imagen del departamento" />
+            <div class="card-body">
+              <h5 class="card-title">${propiedad.titulo}</h5>
+              <p class="card-text">${propiedad.descripcion}</p>
+              <p><i class="fas fa-map-marker-alt"></i> ${propiedad.direccion}</p>
+              <p><i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones | <i class="fas fa-bath"></i> ${propiedad.banos} Baños</p>
+              <p><i class="fas fa-dollar-sign"></i> ${propiedad.precio}</p>
+              ${propiedad.permiteFumar ? '<p class="text-success"><i class="fas fa-smoking"></i> Permitido fumar</p>' : '<p class="text-danger"><i class="fas fa-smoking-ban"></i> No se permite fumar</p>'}
+              ${propiedad.permiteMascotas ? '<p class="text-success"><i class="fas fa-paw"></i> Mascotas permitidas</p>' : '<p class="text-danger"><i class="fas fa-ban"></i> No se permiten mascotas</p>'}
+            </div>
+          </div>
+        </div>
+      `;
+      contenedorPropiedadesEnAlquiler.innerHTML += cardHTML;
+    });
+  </script>
+
+</body>
+</html>
